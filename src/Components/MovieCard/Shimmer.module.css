@@ -1,0 +1,25 @@
+.changecolordark{
+    animation: change-color-dark 2s infinite;
+}
+
+.changecolorlight{
+    animation: change-color-light 2s infinite;
+}
+
+@keyframes change-color-dark {
+    0% , 100% {
+        background-color: lightgray;
+    }
+    50%{
+        background-color: grey;
+    }
+}
+
+@keyframes change-color-light {
+    0% , 100% {
+        background-color: whitesmoke;
+    }
+    50%{
+        background-color: lightgray;
+    }
+}
