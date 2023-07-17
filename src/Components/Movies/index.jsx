@@ -1,3 +1,3 @@
-import Movies from "./Movies";
+import Movies from "./Movies.logic";
 
 export default Movies;
