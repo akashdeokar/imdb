@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import MovieCard from "../MovieCard";
 import axios from "axios";
-import Pagination from "../Pagination";
-import MoviesShimmer from "./Shimmer";
 import { useNavigate } from "react-router-dom";
+import MoviesView from "./Movies.view";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -42,27 +40,14 @@ const Movies = () => {
   }, [page]);
 
   return (
-    <div className="p-5">
-      <div className="text-center font-bold text-2xl m-5">Trending Movies</div>
-      <div
-        onClick={handleClick}
-        className="flex flex-wrap justify-around gap-8"
-      >
-        {!loading ? (
-          movies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              title={movie.title}
-              movieId={movie.id}
-              poster_path={movie.poster_path}
-            />
-          ))
-        ) : (
-          <MoviesShimmer />
-        )}
-      </div>
-      <Pagination page={page} handleNext={handleNext} handlePrev={handlePrev} />
-    </div>
+    <MoviesView
+      movies={movies}
+      page={page}
+      loading={loading}
+      handleClick={handleClick}
+      handleNext={handleNext}
+      handlePrev={handlePrev}
+    />
   );
 };
 
