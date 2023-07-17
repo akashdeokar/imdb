@@ -1,8 +1,9 @@
 import React from "react";
 
-const MovieCard = ({ title, poster_path }) => {
+const MovieCard = ({ title, poster_path, movieId }) => {
   return (
     <div
+      id={movieId}
       className="h-[40vh] w-[200px] rounded-xl bg-center bg-cover hover:scale-110 transition-transform duration-300 hover:cursor-pointer flex items-end overflow-hidden"
       style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,

@@ -5,6 +5,7 @@ import Banner from "./Components/Banner";
 import Movies from "./Components/Movies";
 import Watchlist from "./Components/Watchlist";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MovieDetails from "./Components/MovieDetails";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           ></Route>
 
           <Route path="/watchlist" element={<Watchlist />}></Route>
+          <Route path="/movie/:movieId" element={<MovieDetails />} />
         </Routes>
       </BrowserRouter>
     </>

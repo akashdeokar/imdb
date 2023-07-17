@@ -3,6 +3,7 @@ import MovieCard from "../MovieCard";
 import axios from "axios";
 import Pagination from "../Pagination";
 import MoviesShimmer from "./Shimmer";
+import { useNavigate } from "react-router-dom";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -21,6 +22,14 @@ const Movies = () => {
     }
   };
 
+  const handleClick = (e) => {
+    if (e.target.id !== "") {
+      navigate(`movie/${e.target.id}`);
+    }
+  };
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get(
@@ -35,12 +44,16 @@ const Movies = () => {
   return (
     <div className="p-5">
       <div className="text-center font-bold text-2xl m-5">Trending Movies</div>
-      <div className="flex flex-wrap justify-around gap-8">
+      <div
+        onClick={handleClick}
+        className="flex flex-wrap justify-around gap-8"
+      >
         {!loading ? (
           movies.map((movie) => (
             <MovieCard
               key={movie.id}
               title={movie.title}
+              movieId={movie.id}
               poster_path={movie.poster_path}
             />
           ))
