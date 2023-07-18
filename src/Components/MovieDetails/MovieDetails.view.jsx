@@ -4,10 +4,7 @@ import Banner from "./Banner";
 const MovieDetailsView = ({ movieDetails }) => {
   return (
     <>
-      <Banner
-        backdrop_path={movieDetails.backdrop_path}
-        poster_path={movieDetails.poster_path}
-      />
+      <Banner movieDetails={movieDetails} />
     </>
   );
 };
