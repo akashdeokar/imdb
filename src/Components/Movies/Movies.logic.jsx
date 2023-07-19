@@ -7,6 +7,18 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [watchList, setWatchList] = useState([]);
+
+  const handleAddRemove = (movieId) => {
+    let newArr = [...watchList];
+    if (newArr.includes(movieId)) {
+      newArr = newArr.filter((id) => id !== movieId);
+    } else {
+      newArr.push(movieId);
+    }
+    localStorage.setItem("movieApp", JSON.stringify(newArr));
+    setWatchList(newArr);
+  };
 
   const handleNext = () => {
     setLoading(true);
@@ -39,6 +51,14 @@ const Movies = () => {
       });
   }, [page]);
 
+  useEffect(() => {
+    let moviesFromLocalStorage =
+      localStorage.getItem("movieApp") == null
+        ? "[]"
+        : localStorage.getItem("movieApp");
+    setWatchList(JSON.parse(moviesFromLocalStorage));
+  }, []);
+
   return (
     <MoviesView
       movies={movies}
@@ -47,6 +67,8 @@ const Movies = () => {
       handleClick={handleClick}
       handleNext={handleNext}
       handlePrev={handlePrev}
+      watchList={watchList}
+      handleAddRemove={handleAddRemove}
     />
   );
 };

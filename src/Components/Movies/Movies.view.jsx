@@ -10,6 +10,8 @@ const MoviesView = ({
   handleClick,
   handleNext,
   handlePrev,
+  watchList,
+  handleAddRemove,
 }) => {
   return (
     <div className="p-5">
@@ -25,6 +27,8 @@ const MoviesView = ({
               title={movie.title}
               movieId={movie.id}
               poster_path={movie.poster_path}
+              watchList={watchList}
+              handleAddRemove={handleAddRemove}
             />
           ))
         ) : (
