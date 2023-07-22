@@ -9,7 +9,7 @@ const Banner = ({ movieDetails }) => {
         backgroundImage: `url('https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}')`,
       }}
     >
-      <div className="bg-sky-200/80">
+      <div className="bg-gray-200/80">
         <div className="flex flex-nowrap p-12">
           <PosterCard poster_path={movieDetails.poster_path} />
           <div className="grow px-8">
