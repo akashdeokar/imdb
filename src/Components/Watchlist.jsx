@@ -1,8 +1,14 @@
 import React, { useEffect } from "react";
 import genreids from "../Utility/genre";
 
-const Watchlist = ({ watchList, handleAddRemove }) => {
-  useEffect(() => {}, []);
+const Watchlist = ({ watchList, setWatchList, handleAddRemove }) => {
+  useEffect(() => {
+    let moviesFromLocalStorage =
+      localStorage.getItem("movieApp") == null
+        ? "[]"
+        : localStorage.getItem("movieApp");
+    setWatchList(JSON.parse(moviesFromLocalStorage));
+  }, []);
   return (
     <>
       <div className="flex items-center justify-center mx-auto w-[15rem] h-[3rem] bg-blue-400 rounded-xl text-white">

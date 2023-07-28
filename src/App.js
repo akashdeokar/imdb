@@ -77,6 +77,7 @@ function App() {
               <Watchlist
                 watchList={watchList}
                 handleAddRemove={handleAddRemove}
+                setWatchList={setWatchList}
               />
             }
           ></Route>
