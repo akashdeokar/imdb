@@ -3,10 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import MoviesView from "./Movies.view";
 
-const Movies = () => {
+const Movies = ({ page, loading, setLoading, handleNext, handlePrev }) => {
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
+
   const [watchList, setWatchList] = useState([]);
 
   const handleAddRemove = (movieId) => {
@@ -18,18 +17,6 @@ const Movies = () => {
     }
     localStorage.setItem("movieApp", JSON.stringify(newArr));
     setWatchList(newArr);
-  };
-
-  const handleNext = () => {
-    setLoading(true);
-    setPage(page + 1);
-  };
-
-  const handlePrev = () => {
-    if (page > 1) {
-      setLoading(true);
-      setPage(page - 1);
-    }
   };
 
   const handleClick = (e) => {

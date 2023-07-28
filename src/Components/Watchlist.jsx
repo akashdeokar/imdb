@@ -119,7 +119,9 @@ const Watchlist = () => {
                 <td>{movie.vote_average}</td>
                 <td>{movie.popularity}</td>
                 <td>Action</td>
-                <td className="text-red-600">Delete</td>
+                <td className="text-red-600 hover:cursor-pointer focus:text-black-600">
+                  Delete
+                </td>
               </tr>
             ))}
           </tbody>
