@@ -12,6 +12,7 @@ const MoviesView = ({
   handlePrev,
   watchList,
   handleAddRemove,
+  Includes,
 }) => {
   return (
     <div className="p-5">
@@ -24,11 +25,10 @@ const MoviesView = ({
           movies.map((movie) => (
             <MovieCard
               key={movie.id}
-              title={movie.title}
-              movieId={movie.id}
-              poster_path={movie.poster_path}
+              movie={movie}
               watchList={watchList}
               handleAddRemove={handleAddRemove}
+              Includes={Includes}
             />
           ))
         ) : (

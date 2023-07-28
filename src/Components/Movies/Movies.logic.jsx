@@ -3,21 +3,18 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import MoviesView from "./Movies.view";
 
-const Movies = ({ page, loading, setLoading, handleNext, handlePrev }) => {
+const Movies = ({
+  page,
+  loading,
+  setLoading,
+  handleNext,
+  handlePrev,
+  watchList,
+  setWatchList,
+  handleAddRemove,
+  Includes,
+}) => {
   const [movies, setMovies] = useState([]);
-
-  const [watchList, setWatchList] = useState([]);
-
-  const handleAddRemove = (movieId) => {
-    let newArr = [...watchList];
-    if (newArr.includes(movieId)) {
-      newArr = newArr.filter((id) => id !== movieId);
-    } else {
-      newArr.push(movieId);
-    }
-    localStorage.setItem("movieApp", JSON.stringify(newArr));
-    setWatchList(newArr);
-  };
 
   const handleClick = (e) => {
     if (e.target.id !== "") {
@@ -56,6 +53,7 @@ const Movies = ({ page, loading, setLoading, handleNext, handlePrev }) => {
       handlePrev={handlePrev}
       watchList={watchList}
       handleAddRemove={handleAddRemove}
+      Includes={Includes}
     />
   );
 };
