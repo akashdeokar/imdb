@@ -5,6 +5,26 @@ const Watchlist = ({ watchList, setWatchList, handleAddRemove }) => {
   let [genreList, setGenreList] = useState(["All Genres"]);
   let [curr_genre, setCurr_genre] = useState("All Genres");
   let [search, setSearch] = useState("");
+  let [sortCriteria, setSortCriteria] = useState("");
+  let [sortOrder, setSortOrder] = useState(""); //  asc | desc | ""
+
+  const handleSort = (criteria) => {
+    if (criteria == sortCriteria) {
+      let temp = sortOrder == "asc" ? "desc" : "asc";
+      let sorted = watchList.sort((movieA, movieB) => {
+        return (movieA[criteria] - movieB[criteria]) * (temp == "asc" ? 1 : -1);
+      });
+      setWatchList([...sorted]);
+      setSortOrder(temp);
+    } else {
+      let sorted = watchList.sort((movieA, movieB) => {
+        return movieB[criteria] - movieA[criteria];
+      });
+      setWatchList([...sorted]);
+      setSortCriteria(criteria);
+      setSortOrder("desc");
+    }
+  };
 
   const handleFilter = (genre) => {
     setCurr_genre(genre);
@@ -63,16 +83,36 @@ const Watchlist = ({ watchList, setWatchList, handleAddRemove }) => {
         <table className="w-full">
           <thead className="bg-gray-50 text-gray-900 text-center border-b-2">
             <th>Name</th>
-            <th className="flex justify-center">
+            <th>
               <div className="p-2">
-                <i class="fa-solid fa-arrow-up" />
-              </div>
-              <div className="p-2">Ratings</div>
-              <div className="p-2">
-                <i class="fa-solid fa-arrow-down" />
+                <span className="mx-2">Ratings</span>
+                <i
+                  onClick={() => handleSort("vote_average")}
+                  className={
+                    sortCriteria == "vote_average"
+                      ? sortOrder == "asc"
+                        ? "fa-solid fa-sort-down fa-lg"
+                        : "fa-solid fa-sort-up fa-lg"
+                      : "fa-solid fa-sort fa-lg"
+                  }
+                ></i>
               </div>
             </th>
-            <th>Popularity</th>
+            <th>
+              <div className="p-2">
+                <span className="mx-2">Popularity</span>
+                <i
+                  onClick={() => handleSort("popularity")}
+                  className={
+                    sortCriteria == "popularity"
+                      ? sortOrder == "asc"
+                        ? "fa-solid fa-sort-down fa-lg"
+                        : "fa-solid fa-sort-up fa-lg"
+                      : "fa-solid fa-sort fa-lg"
+                  }
+                ></i>
+              </div>
+            </th>
             <th>Genre</th>
             <th></th>
           </thead>
