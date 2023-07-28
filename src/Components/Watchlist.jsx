@@ -91,9 +91,9 @@ const Watchlist = ({ watchList, setWatchList, handleAddRemove }) => {
                   className={
                     sortCriteria == "vote_average"
                       ? sortOrder == "asc"
-                        ? "fa-solid fa-sort-down fa-lg"
-                        : "fa-solid fa-sort-up fa-lg"
-                      : "fa-solid fa-sort fa-lg"
+                        ? "fa-solid fa-sort-down fa-lg hover:cursor-pointer"
+                        : "fa-solid fa-sort-up fa-lg hover:cursor-pointer"
+                      : "fa-solid fa-sort fa-lg hover:cursor-pointer"
                   }
                 ></i>
               </div>
@@ -106,9 +106,9 @@ const Watchlist = ({ watchList, setWatchList, handleAddRemove }) => {
                   className={
                     sortCriteria == "popularity"
                       ? sortOrder == "asc"
-                        ? "fa-solid fa-sort-down fa-lg"
-                        : "fa-solid fa-sort-up fa-lg"
-                      : "fa-solid fa-sort fa-lg"
+                        ? "fa-solid fa-sort-down fa-lg hover:cursor-pointer"
+                        : "fa-solid fa-sort-up fa-lg hover:cursor-pointer"
+                      : "fa-solid fa-sort fa-lg hover:cursor-pointer"
                   }
                 ></i>
               </div>
