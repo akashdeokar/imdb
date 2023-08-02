@@ -2,11 +2,14 @@ import React from "react";
 import PosterCard from "./PosterCard";
 
 const Banner = ({ movieDetails }) => {
+  if (movieDetails.backdrop_path == undefined) {
+    return;
+  }
   return (
     <div
       className="bg-cover bg-center"
       style={{
-        backgroundImage: `url('https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}')`,
+        backgroundImage: `url('https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}')`,
       }}
     >
       <div className="bg-gray-200/80">

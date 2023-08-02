@@ -1,6 +1,9 @@
 import React from "react";
 
 const MovieCard = ({ movie, watchList, handleAddRemove, Includes }) => {
+  if (movie == undefined) {
+    return;
+  }
   return (
     <div
       id={movie.id}

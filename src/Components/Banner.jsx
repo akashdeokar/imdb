@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const Banner = () => {
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState(undefined);
 
   useEffect(() => {
     axios
@@ -12,6 +12,9 @@ const Banner = () => {
       .then((res) => setMovie(res.data.results[0]));
   }, []);
 
+  if (movie == undefined) {
+    return;
+  }
   return (
     <div
       className="h-[20vh] md:h-[70vh] bg-cover bg-center flex items-end"

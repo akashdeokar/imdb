@@ -82,39 +82,41 @@ const Watchlist = ({ watchList, setWatchList, handleAddRemove }) => {
       <div className="border m-8 rounded-lg shadow-md overflow-hidden">
         <table className="w-full">
           <thead className="bg-gray-50 text-gray-900 text-center border-b-2">
-            <th>Name</th>
-            <th>
-              <div className="p-2">
-                <span className="mx-2">Ratings</span>
-                <i
-                  onClick={() => handleSort("vote_average")}
-                  className={
-                    sortCriteria == "vote_average"
-                      ? sortOrder == "asc"
-                        ? "fa-solid fa-sort-down fa-lg hover:cursor-pointer"
-                        : "fa-solid fa-sort-up fa-lg hover:cursor-pointer"
-                      : "fa-solid fa-sort fa-lg hover:cursor-pointer"
-                  }
-                ></i>
-              </div>
-            </th>
-            <th>
-              <div className="p-2">
-                <span className="mx-2">Popularity</span>
-                <i
-                  onClick={() => handleSort("popularity")}
-                  className={
-                    sortCriteria == "popularity"
-                      ? sortOrder == "asc"
-                        ? "fa-solid fa-sort-down fa-lg hover:cursor-pointer"
-                        : "fa-solid fa-sort-up fa-lg hover:cursor-pointer"
-                      : "fa-solid fa-sort fa-lg hover:cursor-pointer"
-                  }
-                ></i>
-              </div>
-            </th>
-            <th>Genre</th>
-            <th></th>
+            <tr>
+              <th>Name</th>
+              <th>
+                <div className="p-2">
+                  <span className="mx-2">Ratings</span>
+                  <i
+                    onClick={() => handleSort("vote_average")}
+                    className={
+                      sortCriteria == "vote_average"
+                        ? sortOrder == "asc"
+                          ? "fa-solid fa-sort-down fa-lg hover:cursor-pointer"
+                          : "fa-solid fa-sort-up fa-lg hover:cursor-pointer"
+                        : "fa-solid fa-sort fa-lg hover:cursor-pointer"
+                    }
+                  ></i>
+                </div>
+              </th>
+              <th>
+                <div className="p-2">
+                  <span className="mx-2">Popularity</span>
+                  <i
+                    onClick={() => handleSort("popularity")}
+                    className={
+                      sortCriteria == "popularity"
+                        ? sortOrder == "asc"
+                          ? "fa-solid fa-sort-down fa-lg hover:cursor-pointer"
+                          : "fa-solid fa-sort-up fa-lg hover:cursor-pointer"
+                        : "fa-solid fa-sort fa-lg hover:cursor-pointer"
+                    }
+                  ></i>
+                </div>
+              </th>
+              <th>Genre</th>
+              <th></th>
+            </tr>
           </thead>
           <tbody>
             {watchList
@@ -131,7 +133,7 @@ const Watchlist = ({ watchList, setWatchList, handleAddRemove }) => {
                   .includes(search.toLocaleLowerCase());
               })
               .map((movie) => (
-                <tr className="border-b-2 text-center">
+                <tr key={movie.id} className="border-b-2 text-center">
                   <td className="flex items-center px-6 py-4">
                     <img
                       className="w-[8rem] aspect-[4/3]"
