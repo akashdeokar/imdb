@@ -1,9 +1,9 @@
 .changecolordark {
-  animation: change-color-dark 2s infinite;
+  animation: change-color-dark 1s infinite;
 }
 
 .changecolorlight {
-  animation: change-color-light 2s infinite;
+  animation: change-color-light 1s infinite;
 }
 
 @keyframes change-color-dark {
