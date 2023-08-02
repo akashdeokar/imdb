@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import styles from "./MovieCard/Shimmer.module.css";
 
 const Banner = () => {
   const [movie, setMovie] = useState(undefined);
@@ -12,10 +13,9 @@ const Banner = () => {
       .then((res) => setMovie(res.data.results[0]));
   }, []);
 
-  if (movie == undefined) {
-    return;
-  }
-  return (
+  return movie == undefined ? (
+    <BannerShimmer />
+  ) : (
     <div
       className="h-[20vh] md:h-[70vh] bg-cover bg-center flex items-end"
       style={{
@@ -25,6 +25,16 @@ const Banner = () => {
       <div className="text-white bg-gray-900/60 w-full p-4 text-center text-xl">
         {movie.title}
       </div>
+    </div>
+  );
+};
+
+const BannerShimmer = () => {
+  return (
+    <div
+      className={`h-[20vh] md:h-[70vh] flex items-end ${styles.changecolorlight}`}
+    >
+      <div className={`w-full p-6 ${styles.changecolordark}`}></div>
     </div>
   );
 };
